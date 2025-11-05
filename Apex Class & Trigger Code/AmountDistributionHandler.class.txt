@@ -1,0 +1,30 @@
+//// Save this code as .cls file 
+
+
+
+public class AmountDistributionHandler {
+
+    public static void amountDist(List<Appointment__c> listApp){
+        for(Appointment__c app : listApp){
+            // Assign Service Amount based on selected services
+            if(app.Maintenance_service__c && app.Repairs__c && app.Replacement_Parts__c){
+                app.Service_Amount__c = 10000;
+            } else if(app.Maintenance_service__c && app.Repairs__c){
+                app.Service_Amount__c = 5000;    
+            } else if(app.Maintenance_service__c && app.Replacement_Parts__c){
+                app.Service_Amount__c = 8000;    
+            } else if(app.Repairs__c && app.Replacement_Parts__c){
+                app.Service_Amount__c = 7000;
+            } else if(app.Maintenance_service__c){
+                app.Service_Amount__c = 2000;
+            } else if(app.Repairs__c){
+                app.Service_Amount__c = 3000;
+            } else if(app.Replacement_Parts__c){
+                app.Service_Amount__c = 5000;
+            }
+        }
+    }
+}
+
+
+
